@@ -1,0 +1,35 @@
+
+.form> form{
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    width: 30%;
+    margin: auto
+}
+
+form> input{
+    width : 100%;
+    background: rgb(229, 225, 225);
+    color: black;
+    border: none;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 5px;
+    margin-left: 0px;
+}
+
+.button{
+    border: 1px solid #ff5733;
+    border-radius: 3px;
+    background: white;
+    color: #ff5733;
+    padding: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.button:hover{
+    background: #ff5733;
+    color: white;
+}

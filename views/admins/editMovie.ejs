@@ -1,0 +1,18 @@
+<% include ../partials/head %>
+</head>
+
+<body>
+    <% include ../partials/header %>
+</body>
+<section>
+    <form action="/admin/editMovie/<%= movie._id %>" method="POST">
+        <input type="text" name="title" value="<%= movie.title %>">
+        <input type="text" name="description" value="<%= movie.description  %>">
+        <input type="number" name="price" value="<%= movie.price  %>">
+        <input type="text" name="imageURL" value="<%= movie.imageURL  %>">
+        <input type="text" name="alt" value="<%= movie.alt  %>">
+        <input type="submit" value="EDIT">
+    </form>
+</section>
+
+</html>

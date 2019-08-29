@@ -1,0 +1,24 @@
+<header>
+    <nav >
+        <ul>
+            <li> <a href="/allMovies">All Movies</a></li>
+        </ul>
+        <% if(login) { %>
+        <ul>
+            <li><a href="/admin/allMovies">Admin Movies</a></li>
+            <li><a href="/admin/CreateMovie">Create movie</a></li>
+        </ul> 
+        <% } %>
+        <ul>
+            <% if(!login) { %>
+            <li><a href="/auth/login">Login</a></li>
+            <% } else { %>
+            <li>
+                <form action="/auth/logout" method="POST">
+                    <input type="submit" value="Logout" class="submit">
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,21 @@
+<% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    <section>
+        <form action="createMovie" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="enter movie title here">
+            <input type="text" name="description" placeholder="movie description here">
+            <input type="number" name="price" placeholder="price here please">
+            <input type="text" name="imageURL" placeholder="enter image url">
+            <input type="text" name="alt" placeholder="enter image alternative">
+            <input type="file" name="image">
+            <input type="time" name="movieTime1" >
+            <input type="time" name="movieTime2" >
+            <input type="time" name="movieTime3" >
+            <input type="submit" value="Create New Movie">
+        </form>
+    </section>
+    
+</body>
+</html>

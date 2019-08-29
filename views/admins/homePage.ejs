@@ -1,0 +1,34 @@
+<% include ../partials/head %>
+</head>
+
+<body>
+    <% include ../partials/header %>
+    <section>
+        <div class="admin-con">
+            <h2> Available Movies </h2>
+            <div class="all-movies">
+                <% movies.forEach(movie=>{ %>
+                    <div class="movie">
+                        <div class="image">
+                            <img src="<%= movie.imageURL %>" alt="<%= movie.alt %>">
+                        </div>
+                        <ul>
+                            <li class="flex-dsp">Title : <span><%= movie.title %></span></li>
+                            <li class="flex-dsp">Description : <span><%=movie.description %></span></li>
+                            <li class="flex-dsp">Price : <span><%=movie.price %></span></li>
+                        </ul>
+                        <div class="submit-btns flex-dsp">
+                            <a href="/admin/editMovie/<%= movie._id %>" class="btns"> <span>Edit</span></a>
+                            <form action="/admin/deleteMovie" method="POST">
+                                <input type="hidden" name="id" value="<%= movie._id %>">
+                                <input type="submit" value="Delete" class="btns">
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
