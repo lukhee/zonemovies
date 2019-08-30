@@ -6,7 +6,6 @@ body{
     padding: 0;
     margin: 0;
     background: #eeeeee;
-    /* background: #f7f7f7; */
     font-family: 'Lato', sans-serif;
 }
 
@@ -15,38 +14,27 @@ body{
 }
 
 nav{
-    display: flex;
-    justify-content: space-between;
     padding: 10px 5px;
     background: #ff5733;
-    margin-bottom: 20px;
 }
 
-ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
-li{
-    padding-top: 10px;
-    padding-right: 10px
-}
-
-nav ul {
-    display: flex;
-}
-
-input{
-    display: block;
-    padding: 2px;
-    margin: 10px;
-}
 
 a{
-    text-decoration: none;
+    /* text-decoration: none; */
     font-size: 15px;
     font-weight: 600;
+}
+
+.btn:focus{
+    box-shadow: 0 0 0 0.2rem #ff583352
+}
+
+ nav a:hover, nav .submit:hover{
+    text-decoration: none !important;
+    background: white;
+    color: #ff5733 !important;
+    border-radius: 4px;
 }
 
 li> a{

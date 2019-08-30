@@ -18,15 +18,20 @@ form> input{
     margin-left: 0px;
 }
 
+label{
+    font-size:12px
+}
+
 .button{
     border: 1px solid #ff5733;
-    border-radius: 3px;
     background: white;
     color: #ff5733;
-    padding: 7px;
-    font-size: 14px;
     font-weight: 600;
-    margin-top: 20px;
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 0.2rem #ff583352;
+    border-color: #ff583352;
 }
 
 .button:hover{

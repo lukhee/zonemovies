@@ -1,27 +1,27 @@
 <% include ../partials/head %>
 </head>
 
-<body>
-    <% include ../partials/header %>
-</body>
-<section>
-    <div class="admin-con">
-        <h2> Available Movies </h2>
-        <div class="all-movies">
-            <% movies.forEach(movie=>{ %>
-                <div class="movie">
-                    <% include ../partials/movieCard %>
-                    <div class="submit-btns flex-dsp">
-                        <a href="/user/trealer/<%= movie._id %>" class="btns">Trealer</a>
-                        <form action="/user/booked" method="POST">
-                            <input type="hidden" name="id" value="<%= movie._id %>">
-                            <input type="submit" value="Booked" class="btns">
-                        </form>
+    <body class="container-fluild">
+        <% include ../partials/header %><section>
+            <% include ../partials/carousel %>
+            <div class="admin-con">
+                <h2> Available Movies </h2>
+                <div class="all-movies">
+                    <% movies.forEach(movie=>{ %>
+                    <div class="movie">
+                        <% include ../partials/movieCard %>
+                        <div class="submit-btns flex-dsp">
+                            <a href="/user/trealer/<%= movie._id %>" class="btns">Trealer</a>
+                            <form action="/user/booked" method="POST">
+                                <input type="hidden" name="id" value="<%= movie._id %>">
+                                <input type="submit" value="Booked" class="btns">
+                            </form>
+                        </div>
                     </div>
+                    <% }) %>
                 </div>
-            <% }) %>
-        </div>
-    </div>
-</section>
-
+            </div>
+        </section>
+    </body>
+    <% include ../partials/script %>
 </html>

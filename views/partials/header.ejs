@@ -1,24 +1,23 @@
 <header>
-    <nav >
-        <ul>
-            <li> <a href="/allMovies">All Movies</a></li>
-        </ul>
-        <% if(login) { %>
-        <ul>
-            <li><a href="/admin/allMovies">Admin Movies</a></li>
-            <li><a href="/admin/CreateMovie">Create movie</a></li>
-        </ul> 
-        <% } %>
-        <ul>
-            <% if(!login) { %>
-            <li><a href="/auth/login">Login</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light px-3 py-3 row justify-content-between" >
+        <ul class="navbar-nav col-10  mx-3">
+                <li class="nav-item active"> <a class="navbar-link px-3 py-1" href="/allMovies">All Movies</a></li>
+            <% if(login) { %>
+                <li class="nav-item  "><a class="navbar-link px-3 py-1" href="/admin/allMovies">Admin Movies</a></li>
+                <li class="nav-item"><a class="navbar-link px-3 py-1" href="/admin/CreateMovie">Create movie</a></li>
+            <% } %>
+                <% if(!login) { %>
+                <li class="nav-item"><a class="navbar-link px-3 py-1" href="/auth/login">Login</a></li>
             <% } else { %>
-            <li>
-                <form action="/auth/logout" method="POST">
-                    <input type="submit" value="Logout" class="submit">
-                </form>
-            </li>
+                <li class="nav-item">
+                    <form action="/auth/logout" method="POST">
+                            <input type="submit" value="Logout" class="px-3 py-1 submit">
+                    </form>
+                </li>
             <% } %>
         </ul>
+        <form class="col text-right px-3">
+            <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
     </nav>
 </header>
