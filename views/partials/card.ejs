@@ -1,0 +1,15 @@
+<div class="image">
+    <img src="<%= movie.imagePath || movie.imageURL %>" alt="<%= movie.alt %>">
+</div>
+<ul>
+    <li class="flex-dsp">Title : <span><%= movie.title %></span></li>
+    <li class="flex-dsp">Description : <span><%=movie.description %></span></li>
+    <li class="flex-dsp">Price : <span><%=movie.price %></span></li>
+</ul>
+<div>
+    <ul>
+        <% for(var i = 0; i <  movie.time.length; i++){ %>
+            <li><%=  movie.time[i] %></li>
+        <% } %>
+    </ul>
+</div>

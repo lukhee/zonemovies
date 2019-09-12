@@ -1,21 +1,82 @@
 <% include ../partials/head %>
+<link rel="stylesheet" href="/styleSheet/login.css">
 </head>
 <body>
     <% include ../partials/header %>
-    <section>
-        <form action="createMovie" method="POST" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="enter movie title here">
-            <input type="text" name="description" placeholder="movie description here">
-            <input type="number" name="price" placeholder="price here please">
-            <input type="text" name="imageURL" placeholder="enter image url">
-            <input type="text" name="alt" placeholder="enter image alternative">
-            <input type="file" name="image">
-            <input type="time" name="movieTime1" >
-            <input type="time" name="movieTime2" >
-            <input type="time" name="movieTime3" >
-            <input type="submit" value="Create New Movie">
+    <div class="row justify-content-center bg-dark">
+        <form class="w-50 p-3 bg-white my-4" action="createMovie" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Movie Title</label>
+                <input type="text" class="form-control dark-bg form-control-sm" name="title" id="title"
+                    placeholder="movie title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control dark-bg form-control-sm"  name="description" id="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="openingDate">Release Date</label>
+                <input type="date" class="form-control dark-bg form-control-sm" name="releasedDate" id="openingDate"
+                    placeholder="release date">
+            </div>
+            <div class="form-group">
+                <label for="certicate">Certificate</label>
+                <input type="text" class="form-control dark-bg form-control-sm" name="certificate" id="certicate" placeholder="certificate">
+            </div><div class="form-group">
+                <label for="genre">Genre</label>
+                <input type="text" class="form-control dark-bg form-control-sm" name="genre" id="genre" placeholder="genre here">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control dark-bg form-control-sm"name="price" id="price" placeholder="movie price">
+            </div>
+            <div>
+                <label for="inputAddress">Show time</label>
+                <div class="form-row time1 mb-2">
+                    <div class="col">
+                        <input type="time" name="movieTime1" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime2" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime3" class="form-control dark-bg form-control-sm">
+                    </div>
+                </div>
+                <div class="form-row time mb-2">
+                    <div class="col">
+                        <input type="time" name="movieTime4"  class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime5" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime6" class="form-control dark-bg form-control-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image Download</label>
+                    <input type="text" name="imageURL" class="form-control dark-bg form-control-sm" id="image" placeholder="image url">
+                </div>
+                <div class="form-row time mb-1">
+                    <div class="col">
+                        <input type="file" class="form-control dark-bg-file form-control-sm" name="downloadImage" >
+                        
+                    </div>
+                    <div class="col">
+                        <input type="text" name="altImageName" placeholder="image alternative name" class="form-control dark-bg form-control-sm dark-bg-sm form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image Download2</label>
+                    <input type="text" name="imageURL2" class="form-control dark-bg form-control-sm" id="image" placeholder="image url2">
+                </div>
+            </div> 
+            <div class="form-group">
+                <button type="submit" class=" form-control mt-4 btn btn-sm button w-100">Submit</button>
+            </div>
         </form>
-    </section>
+    </div>
     <% include ../partials/script %>
 </body>
 </html>

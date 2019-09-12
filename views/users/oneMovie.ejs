@@ -1,10 +1,54 @@
  <% include ../partials/head %>
+ <link rel="stylesheet" href="/stylesheet/singleMovie.css">
 </head>
 
-<body>
+<body class="bg-dark">
     <% include ../partials/header %>
-
-    
+    <div class="bg-dark" style="height: 400px "> 
+        <img class="w-100 h-100" src="<%= movie.imageURL %>" alt="image hee">
+    </div>
+    <div class="container">
+        <div class="movie-div-bt text-white row justify-content-center p-3" style=" height: 400px">
+            <div class="col-3 w-100 h-100 p-0">
+                <img class="w-100 h-100"
+                    src="<%= movie.imageURL2%>"
+                    alt="">
+            </div>
+            <div class="col-6 rel-display">
+                <div class="row justify-content-between px-2">
+                    <h4> <span class="under"> <%= movie.title %> </span></h4>
+                    <h5> <span class="cl"> <%= movie.genre %> </span></h5>
+                </div>
+                <p class="txt-muted" style="line-height: 1.3; font-size: 14px; font-weight: 600"><%= movie.description %></p>
+                <br>
+                <h6 class="m-0">Opening date </h6>
+                <h6><span class="txt-muted"><%= movie.releasedDate %></span></h6>
+                <h6 class="m-0">Running Time </h6>
+                <h6><span class="txt-muted"> 120min</span></h6>
+                <h6 class="m-0"> Certificate </h6>
+                <h6><span class="txt-muted"><%= movie.certificate%></span></h6>
+                <div class="bottom-div">
+                    <h6> Rating : <span class="txt-muted"> stas here</span></h6>
+                </div>
+            </div>
+            <div class="col-3 rel-display">
+                <h4> <span  class="under"> Movie Time: </span> </h4>
+                <h6>Mon - Thur</h6>
+                <ul>
+                    <% movie.time.forEach(time=>{ %>
+                        <li class="mb-2"><span class="py-1 px-3 rounded btime" style="font-weight: 600; font-size: 12px"> <%= time %>
+                            </span></li>
+                    <% }) %>
+                </ul>
+                <a href="/movie/<%= movie._id %>/booked" class=" bottom-div px-3 w-100 mb-3 btn btns">Booked</a>
+            </div>
+            <div class="col-12 preview row justify-content-center p-3">
+                <iframe frameBorder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+                <!-- <iframe class="p-3" src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000360?referenceScheme=HeadOffice&allowPlaceHolder=true"></iframe> -->
+            </div>
+        </div>
+    </div>
     <% include ../partials/script %>
 </body>
 </html>

@@ -4,7 +4,7 @@ const route = require("express").Router()
 
 route.get('/login', authController.getLogin)
 
-route.post('/create', authController.createLogin)
+route.post('/createAdmin', authController.createLogin)
 
 route.post('/login', authController.postLogin)
 

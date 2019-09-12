@@ -31,15 +31,23 @@ exports.postCreateMovie = ( req, res, next ) => {
     let movieDetails = {
         title: req.body.title,
         description: req.body.description,
+        releasedDate: req.body.releasedDate,
+        certificate: req.body.certificate,
+        genre: req.body.genre,
         price: req.body.price,
+        time: [req.body.movieTime1, req.body.movieTime2, req.body.movieTime3, req.body.movieTime4, req.body.movieTime5, req.body.movieTime6],
         imageURL: req.body.imageURL,
-        imagePath: req.file,
-        time: [req.body.movieTime1, req.body.movieTime2, req.body.movieTime3]
+        download: req.file,
+        altImageName: req.body.altImageName,
+        imageURL2: req.body.imageURL2
     }
+
+
     if(!req.file){
-        console.log(req.file)
+        delete movieDetails.download
     } else {
-        movieDetails.imagePath = req.file.path
+        movieDetails.download = req.file.path
+    }
         db.collection("movies")
             .insertOne(movieDetails)
             .then(result => {
@@ -49,7 +57,6 @@ exports.postCreateMovie = ( req, res, next ) => {
             .catch(err => {
                 console.log(err)
             })
-        }
 }
 
 exports.editMovie = (req, res, next) => {
@@ -105,5 +112,5 @@ exports.deleteMovie = (req, res, next) => {
 }
 
 exports.checkBookedMovie = (req, res, next) => {
-    res.send("check booked movie")
+    res.send("ticket page")
 }

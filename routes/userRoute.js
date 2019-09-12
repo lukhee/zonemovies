@@ -6,6 +6,8 @@ route.get('/allMovies', userController.getAllMovies)
 
 route.get('/movie/:id', userController.getOneMovie)
 
-route.get('/bookedMovie', userController.bookedMovie)
+route.get("/movie/:id/booked", userController.bookedMovie)
+
+route.post("/movie/:id/booked", userController.postBookedMovie)
 
 module.exports = route

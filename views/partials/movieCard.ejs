@@ -1,3 +1,4 @@
+<!-- 
 <div class="image">
     <img src="<%= movie.imagePath || movie.imageURL %>" alt="<%= movie.alt %>">
 </div>
@@ -9,7 +10,35 @@
 <div>
     <ul>
         <% for(var i = 0; i <  movie.time.length; i++){ %>
-            <li><%=  movie.time[i] %></li>
+        <li><%=  movie.time[i] %></li>
         <% } %>
     </ul>
+</div> -->
+
+<div class="card p-2 movie-div-bt bg-dark">
+    <div class="row no-gutters">
+        <div class="col-md-3" style="height: 255px;">
+            <img src="<%= movie.imagePath || movie.imageURL2 %>" class="card-img mh-100" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body pt-0">
+                <a href="/movie/<%=movie._id %>" class="text-white a-title">
+                    <span class="card-title text-capitalize title pt-0"> <%= movie.title %></span>
+                </a>
+                <p class="card-text txt-muted short-p" ><%=movie.description %></p>
+                <p class="card-text text-white mb-0"><small style=" font-size: 15px; font-weight: 600"><%= movie.certificate %></small></p>
+                <p class="card-text text-white"><small style=" font-size: 15px; font-weight: 600"><%= movie.genre %></small></p>
+                <ul class="row ml-0">
+                    <% for(var i = 0; i < 3; i++){ %>
+                        <li class="mr-2 py-1 px-4 mt-1 rounded movieTime"><%=  movie.time[i] %></li>
+                    <% } %>
+                    <li class="mr-2 py-1 ">More Time</li>
+                </ul>
+            </div>
+            <div class="card-footer txt-muted row justify-content-between bg-dark" style="margin-left: 0">
+                <a href="/movie/5d75492b14af142ef082cd65/booked" class="btns trailer rounded px-3 py-1">Trealer</a>
+                <a href="/movie/5d75492b14af142ef082cd65/booked" class="btns trailer rounded px-3 py-1">Booked</a>
+            </div>
+        </div>
+    </div>
 </div>

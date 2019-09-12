@@ -1,0 +1,83 @@
+<% include ../partials/head %>
+<link rel="stylesheet" href="/stylesheet/singleMovie.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body class="bg-dark">
+    <% include ../partials/header %>
+    <!-- <div class="bg-dark" style="height: 400px ">
+        <img class="w-100 h-100" src="..." alt="image hee">
+    </div> -->
+    <div class=" row w-100 my-4 justify-content-around rounded">
+        <div class="col-md-6  bg-white p-4">
+            <form class="was-validated" id="form1" action="/movie/<%=movie._id%>/booked" method="POST">
+                <div class="mt-4 rounded border border-danger p-3 mb-3">
+                    <h3 class=""> Movie Info </h3>
+                    <div class="form-row justify-content-between">
+                        <div class="col-md-6 mb-3">
+                            <label for="date">Days</label>
+                            <select class="custom-select is-valid" id="day" name="day" required>
+                                <option value=""> Pick Day</option>
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">wednesday</option>
+                                <option value="thursday"> Thursday </option>
+                                <option value="friday"> Friday </option>
+                                <option value="saturday"> Saturday</option>
+                                <option value="sunday">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="time">Time</label>
+                            <select class="custom-select" name="time" id="time" required>
+                                <option value="">Pick Time</option>
+                                <% movie.time.forEach(time=>{ %>
+                                    <option value="<%= time %>"><%= time %>"</option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-between" style="user-select: none">
+                        <div class="col-md-6 mt-2" id="increament">
+                            <!-- <span id="decrease" class="py-2 px-3 bg-light border">-</span><span id="quantity" class="py-2 px-3 bg-light border">0</span><span id="increase" class="py-2 px-3 bg-light border">+</span> -->
+                            <select class="custom-select is-valid" id="quantity"  name="quantity" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5"> 5 </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 mt-2">
+                            <span id="price" style="line-height: 2.5" name="price" class=" py-2 px-3 bg-light border"><%= movie.price %></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 rounded border border-danger p-3 mb-3">
+                    <h3 class=""> Customer Info </h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Fullname</label>
+                            <input type="text" class="form-control form-control-sm is-valid"  name="name" id="name" placeholder="enter name"
+                                required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phoneNo">Phone numbe</label>
+                            <input type="number" class="form-control form-control-sm"  name="phoneNo" id="phoneNo" placeholder="phone no" required>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control form-control-sm"  name="email" id="email" placeholder="email here" required>
+                </div>
+
+                </div>
+                <button class="btn btn-primary w-100" type="submit" >Submit form</button>
+            </form>
+        </div>
+    </div>
+    <% include ../partials/script %>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+.btime{
+    border: 1px solid #ff5733;
+    color: #ff5733
+}
+
+.rel-display{
+    position: relative;
+    border-left: 1px solid #ffffff99;
+}
+
+.rel-display>.bottom-div{
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.rel-display>button{
+    left: 50%;
+    margin-left: -41px;
+    color: #ff5733;
+    background: white;
+
+}
+
+
+
+.preview{
+    height: 400px;
+}
+
+.preview>iframe{
+    width: 50%;
+    height: 100%;
+    margin: 20px;
+}
+

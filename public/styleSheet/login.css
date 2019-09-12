@@ -7,7 +7,7 @@
     margin: auto
 }
 
-form> input{
+input{
     width : 100%;
     background: rgb(229, 225, 225);
     color: black;
@@ -16,6 +16,10 @@ form> input{
     line-height: 12px;
     padding: 5px;
     margin-left: 0px;
+}
+
+.dark-bg{
+    background: rgb(229, 225, 225);
 }
 
 label{
@@ -27,6 +31,10 @@ label{
     background: white;
     color: #ff5733;
     font-weight: 600;
+}
+
+.title:hover{
+    color:#ff5733
 }
 
 .form-control:focus{
