@@ -14,6 +14,9 @@ exports.getAllMovies = (req, res, next)=>{
     })
     .catch(err=>{
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 
@@ -56,6 +59,9 @@ exports.postCreateMovie = ( req, res, next ) => {
             })
             .catch(err => {
                 console.log(err)
+                const error = new Error(err)
+                error.httpStatusCode = 500;
+                return next(error)
             })
 }
 
@@ -70,6 +76,9 @@ exports.editMovie = (req, res, next) => {
     })
     .catch(err=>{
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 
@@ -94,6 +103,9 @@ exports.postEditMovie = (req, res, next)=>{
     })
     .catch(err=>{
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 
@@ -106,8 +118,11 @@ exports.deleteMovie = (req, res, next) => {
         console.log("movie deleted successfully")
         res.redirect("/admin/allMovies")
     })
-    .catch( err =>{
+    .catch(err => {
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 

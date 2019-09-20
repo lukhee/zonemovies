@@ -1,0 +1,23 @@
+<% include ../partials/head %>
+</head>
+
+<body class="min-vh-100 bg-dark container-fluid">
+    <% include ../partials/header %>
+    <div class="row justify-content-around">
+        <div class="col-md-4 bg-white rounded p-2 m-5">
+                <h1 class="text-center">ticket id</h1>
+            <div class="flex justify-content-between mt-2 mx-3">
+                <label class="w-25 p-1 "> Name : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.name%></span>
+            </div>
+            <div class="flex justify-content-between mt-2 mx-3">
+                <label class="w-25 p-1"> Day : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.day%></span>
+            </div>
+            <div class="flex justify-content-between mt-2 mx-3">
+                <label class="w-25 p-1"> Time : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.time%></span>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/script %>
+</body>
+
+</html>

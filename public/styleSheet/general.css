@@ -64,8 +64,6 @@ color: #eeeeee
     background: #ff5733;
 } 
 
-.btns
-
 .movie-div-bt{
 border-bottom: 2px solid #eeeeee;
 }
@@ -164,6 +162,19 @@ li> a{
     box-shadow: 2px 2px 2px 2px #cecece69;
 }
 
+.modal-content{
+    height: 400px;
+}
+
+.close{
+color: white !important;
+}
+
+iframe{
+    width: 100%;
+    height: 100%;
+}
+
 a:hover, .btns:hover {
     text-decoration: none !important;
 }
@@ -182,6 +193,40 @@ a:hover, .btns:hover {
     color: #ff5733 !important;
     text-decoration: none;
 }
+
+.btn-primary{
+    color: #fff;
+    background-color: #ff5733 !important;
+    border-color: #ff5733 !important;
+}
+
+.btn-primary:focus{
+    box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5) !important;
+}
+
+.was-validated .custom-select:invalid, .was-validated .form-control:invalid, .border {
+    border-color: #ff5733 !important;
+}
+
+.was-validated .custom-select:invalid:focus{
+box-shadow: 0 0 0 0.2rem #ff57333d
+}
+
+.card-panel{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+
+.movie-card{
+    position: relative;
+    max-width: 280px;
+    min-height: 300px;
+    overflow: hidden;
+}
+
 
 @media only screen and (max-width: 600px) {
   

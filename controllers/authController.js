@@ -5,15 +5,6 @@ let db;
 
 
 exports.getLogin = (req, res, next) => {
-    // db = getDb();
-    // db.collection("movuseies").find().toArray()
-    //     .then(movies => {
-    //         console.log(movies)
-    //         res.render("users/allMovies", { movies: movies, title: "user page" })
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
     let login = req.session.isloggedin
     res.render("auth/login", {login: login})
 }
@@ -33,6 +24,9 @@ exports.createLogin = (req, res, next)=>{
     })
     .catch(err=>{
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 
@@ -66,6 +60,9 @@ exports.postLogin = (req, res, next)=>{
     })
     .catch(err=>{
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        return next(error)
     })
 }
 

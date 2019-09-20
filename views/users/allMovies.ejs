@@ -2,25 +2,26 @@
 </head>
 
     <body class="container-fluild bg-dark">
-        <% include ../partials/header %><section>
+        <% include ../partials/header %>
+        <section>
             <% include ../partials/carousel %>
             <div class="row justify-content-center p-4 text-white">
-                <div class="col-2 text-right pr-0">
+                <div class="col-sm-2 text-right pr-0">
                     <div class="days-select-div">
                     </div>
                     <div class="text-white text-right pr-0">
                         <h3 class=""> <span class="underline">Choose Days</span></h3>
                         <ul class="py-3 days-li">
-                            <li>Monday</li>
-                            <li>Tuesday</li>
-                            <li>Wednesday</li>
-                            <li>Thursday</li>
-                            <li>Friday</li>
+                            <li><a href="/allmovies/monday">Monday</a></li>
+                            <li><a href="/allmovies/tuesday">Tuesday</a></li>
+                            <li><a href="/allmovies/wednesday">Wednesday</a></li>
+                            <li><a href="/allmovies/thursday">Thursday</a></li>
+                            <li><a href="/allmovies/friday">Friday</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-9">
-                    <% movies.forEach(movie=>{ %>
+                <div class="col-sm-9">
+                    <% movies.forEach(function(movie, index){ %>
                     <div class="movie">
                         <% include ../partials/movieCard %>
                     </div>
@@ -28,6 +29,8 @@
                 </div>
             </div>
         </section>
+        
+        <script src="/javascript/general.js"></script>
+        <% include ../partials/script %>
     </body>
-    <% include ../partials/script %>
 </html>

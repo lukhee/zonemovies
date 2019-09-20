@@ -3,11 +3,14 @@ const bodyParser = require("body-parser")
 const adminRoute = require("./routes/adminRoute")
 const userRoute = require("./routes/userRoute")
 const authRoute = require("./routes/authRoute")
+const errorRoute = require("./routes/errorRoute")
 var multer = require('multer')
+const request = require('request');
 const mongo = require('mongodb').MongoClient
 var session = require('express-session')
 const mongoStore = require("connect-mongodb-session")(session)
 const mongoConnect = require('./util/db').mongoConnect
+// const { initializePayment, verifyPayment } = require('./config/paystack')(request);
 const app = express()
 
 
@@ -55,12 +58,22 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(upload.single('image'))
 
+app.get("/error500", (req, res, next) => {
+    let login = req.session
+    res.render("errorPages/error500", { login: login })
+})
+
 app.use('/admin', adminRoute)
 app.use('/auth', authRoute)
 app.use('/', userRoute)
 
-app.use((req, res, next) => {
-    res.send("error 404 page not found")
+// app.use((req, res, next) => {
+//     res.send("error 404 page not found")
+// })
+
+app.use((error, req, res, next)=>{
+    console.log("error found in error route")
+    res.redirect("/error500")
 })
 
 mongoConnect(mongo, ()=>{

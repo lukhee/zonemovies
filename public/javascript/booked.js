@@ -11,38 +11,6 @@ $(document).ready(function () {
     // var finalePrice = parseInt($("#price").text())
     // let quantity = 1
     // $("#quantity").text(quantity);
-
-    // // increase and decrease
-    // $("#increase").click(function(){
-    //     $("#quantity").html(function (i, origText) {
-    //         let value = parseInt(origText, 10)
-    //         if(value >= 10){
-    //            let totalPrice = 10
-    //             finalePrice = totalPrice * price
-    //             $("#price").text(finalePrice);
-    //             return 10
-    //         }
-    //         let totalPrice = value + 1
-    //         finalePrice = totalPrice * price
-    //         $("#price").text(finalePrice);
-    //         return value + 1
-    //     });
-    // });
-    // $("#decrease").click(function () {
-    //     $("#quantity").html(function (i, origText) {
-    //         let value = parseInt(origText, 10)
-    //         if (value <= 1) {
-    //             let totalPrice = value
-    //             finalePrice = totalPrice * price
-    //             $("#price").text(finalePrice);
-    //             return 1
-    //         }
-    //         let totalPrice = value - 1
-    //         finalePrice = totalPrice * price
-    //         $("#price").text(finalePrice);
-    //         return value - 1
-    //     });
-    // });
     
     // // movie ticket info
     // $("#movieTicket").click(function(e){

@@ -1,18 +1,92 @@
 <% include ../partials/head %>
+<link rel="stylesheet" href="/styleSheet/login.css">
 </head>
 
 <body>
     <% include ../partials/header %>
-    <section>
-        <form action="/admin/editMovie/<%= movie._id %>" method="POST">
-            <input type="text" name="title" value="<%= movie.title %>">
-            <input type="text" name="description" value="<%= movie.description  %>">
-            <input type="number" name="price" value="<%= movie.price  %>">
-            <input type="text" name="imageURL" value="<%= movie.imageURL  %>">
-            <input type="text" name="alt" value="<%= movie.alt  %>">
-            <input type="submit" value="EDIT">
+    <div class="row justify-content-center bg-dark">
+        <form class="w-50 p-3 bg-white my-4" action="/admin/editMovie/<%= movie._id %>" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Movie Title</label>
+                <input type="text" value="<%= movie.title %>" class="form-control dark-bg form-control-sm" name="title" id="title"
+                    placeholder="movie title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control dark-bg form-control-sm" name="description" id="description"
+                    rows="3"> <%= movie.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="openingDate">Release Date</label>
+                <input type="date" class="form-control dark-bg form-control-sm" value="<%= movie.releasedDate %>" name="releasedDate" id="openingDate"
+                    placeholder="release date">
+            </div>
+            <div class="form-group">
+                <label for="certicate">Certificate</label>
+                <input type="text" class="form-control dark-bg form-control-sm" value="<%= movie.certificate %>"  name="certificate" id="certicate"
+                    placeholder="certificate">
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <input type="text" class="form-control dark-bg form-control-sm" name="genre" value="<%= movie.genre %>" id="genre"
+                    placeholder="genre here">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control dark-bg form-control-sm" value="<%= movie.price %>" name="price" id="price"
+                    placeholder="movie price">
+            </div>
+            <div>
+                <label for="inputAddress">Show time</label>
+                <div class="form-row time1 mb-2">
+                    <div class="col">
+                        <input type="time" name="movieTime1" value="<%= movie.time[0] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime2" value="<%= movie.time[1] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime3" value="<%= movie.time[2] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                </div>
+                <div class="form-row time mb-2">
+                    <div class="col">
+                        <input type="time" name="movieTime4" value="<%= movie.time[3] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime5" value="<%= movie.time[4] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="movieTime6" value="<%= movie.time[5] %>" class="form-control dark-bg form-control-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image Download</label>
+                    <input type="text" name="imageURL" value="<%= movie.imageURL %> class="form-control dark-bg form-control-sm" id="image"
+                        placeholder="image url">
+                </div>
+                <div class="form-row time mb-1">
+                    <div class="col">
+                        <input type="file" value="<%= movie.file %>" class="form-control dark-bg-file form-control-sm" name="downloadImage">
+
+                    </div>
+                    <div class="col">
+                        <input type="text" name="altImageName" value="<%= movie.altImageName %>" placeholder="image alternative name"
+                            class="form-control dark-bg form-control-sm dark-bg-sm form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image Download2</label>
+                    <input type="text" name="imageURL2" value="<%= movie.imageURL2 %>" class="form-control dark-bg form-control-sm" id="image"
+                        placeholder="image url2">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class=" form-control mt-4 btn btn-sm button w-100">Edit</button>
+            </div>
         </form>
-    </section>
+    </div>
     <% include ../partials/script %>
 </body>
+
 </html>
