@@ -1,22 +1,46 @@
 <% include ../partials/head %>
+<link rel="stylesheet" href="/stylesheet/booked.css">
 </head>
 
-<body class="min-vh-100 bg-dark container-fluid">
+<body onload="countDown()" class="min-vh-100 bg-dark container-fluid">
     <% include ../partials/header %>
-    <div class="row justify-content-around">
+    <div class="row justify-content-center">
         <div class="col-md-4 bg-white rounded p-2 m-5">
-                <h1 class="text-center">ticket id</h1>
-            <div class="flex justify-content-between mt-2 mx-3">
-                <label class="w-25 p-1 "> Name : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.name%></span>
+                <h1 class="text-center"><%= ticket.movieCode %></h1>
+                <div class="text-center"> <span class="rounded text-white px-3" style="background: #ff5733;"> Ticket ID </span></div>
+            <div class="row justify-content-around my-3 mx-3">
+                <label class="col-2 text-muted p-1 "> Name : </label> 
+                <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=ticket.name%></div>
             </div>
-            <div class="flex justify-content-between mt-2 mx-3">
-                <label class="w-25 p-1"> Day : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.day%></span>
+            <div class="row justify-content-around my-3 mx-3">
+                <label class="col-2 text-muted p-1"> Email : </label>
+                <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=ticket.email%></div>
             </div>
-            <div class="flex justify-content-between mt-2 mx-3">
-                <label class="w-25 p-1"> Time : </label> <span class="w-75 p-1 bg-light"> <%=ticketInfo.time%></span>
+            <div class="row justify-content-around my-3 mx-3">
+                <label class="col-2 text-muted p-1"> Movie : </label>
+                <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=ticket.day%></div>
             </div>
+            <div class="row justify-content-around my-3 mx-3">
+                <label class="col-2 text-muted p-1"> Day : </label> 
+                <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=ticket.day%></div>
+            </div> 
+            <div class="row justify-content-around my-3 mx-3 mb-4">
+                <label class="col-2 text-muted p-1"> Time : </label> 
+                <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=ticket.time%></div>
+            </div>
+            <div class="text-center my-3 mx-3">
+                <a class=" btn btns w-100 font-weight-bold" href="/allmovies"> Leave Page </a>
+            </div>
+            <div style="font-size: 12px;" class="text-center mb-4 font-weight-bold"><span style=" border-bottom: 1px solid #ff5733"> Notice : The movie detail is also sent to your mail </span></div>
         </div>
+        <div class="col-md-4 text-white p-2 m-5 d-flex align-items-center justify-content-around ">
+            <div class="text-center d-flex flex-column">
+                <span id="demo" style="background:#ff5733; font-size: 34px;" class=" font-weight-bold p-5 rounded-circle"> Exit </span>
+                    <span class="font-weight-bold">Exit page </span>
+            </div>
+         </div>
     </div>
+    <script src="/javascript/ticketVerification.js"></script>
     <% include ../partials/script %>
 </body>
 

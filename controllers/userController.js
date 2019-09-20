@@ -83,7 +83,7 @@ exports.postBookedMovie = (req, res, next) => {
         .then(ticket => {
             if(ticket){
                 console.log(ticketInfo)
-                return res.render('users/bookingInfo', {login: login, ticketInfo: ticketInfo})
+                return res.render('users/bookingInfo', {login: login, ticket: ticketInfo})
             }
         })
         .catch(err => {

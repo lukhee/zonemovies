@@ -1,0 +1,13 @@
+label{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ticketInfo{
+    box-shadow: 2px 2px 4px #ff573373;
+}
+
+.btns:hover{
+    box-shadow: 3px 3px 3px #ff573373;
+    background: #ff573373
+}
