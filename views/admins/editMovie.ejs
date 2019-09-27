@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/styleSheet/login.css">
 </head>
 
-<body>
+<body class="container-fluid p-0" onload="loadData()">
     <% include ../partials/header %>
     <div class="row justify-content-center bg-dark">
         <form class="w-50 p-3 bg-white my-4" action="/admin/editMovie/<%= movie._id %>" method="POST" enctype="multipart/form-data">

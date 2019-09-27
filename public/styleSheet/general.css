@@ -9,6 +9,8 @@ body{
     font-family: 'Lato', sans-serif;
 }
 
+
+
  * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -41,6 +43,9 @@ body{
     width: 60%;
     background: red;
 } 
+.nav-link{
+color: white;
+}
 
 .days-li>li{
 font-size: 15px;
@@ -73,8 +78,6 @@ nav{
     padding: 10px 5px;
     background: #ff5733;
 }
-
-
 
 a{
     text-decoration: none;
@@ -227,7 +230,51 @@ box-shadow: 0 0 0 0.2rem #ff57333d
     overflow: hidden;
 }
 
+.search-list{
+    padding-top: 10px;
+    position: absolute;
+    background: white;
+    top:40px;
+    z-index: 1;
+    width: 100%;
+    border-radius: 2px;
+    display: none;
 
-@media only screen and (max-width: 600px) {
-  
+}
+
+.search-list li:last-child{
+    border-bottom: none;
+    font-size: 14px;
+    padding-bottom: 0px
+}
+
+.search-list li{
+    padding-top: 10px;
+    border-bottom: 1px solid #ff5733;
+    padding: 4px 10px;
+}
+
+.search-list li a{
+    color: black;
+}
+
+.admin-cat{
+    width: 25%;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .admin-cat{
+      width: 50% !important;
+      display: flex;
+      justify-content: space-evenly
+    }
+}
+
+@media only screen and (max-width: 500px) {
+  .admin-cat{
+      width: 100% !important;
+      display: flex;
+      justify-content: center
+    }
 }

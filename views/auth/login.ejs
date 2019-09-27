@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="/styleSheet/login.css">
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark p-0">
     <% include ../partials/header.ejs %>
-    <section class="mt-5">
-        <div class="m-auto w-25 p-4 bg-white">
+    <section class="m-5 row justify-content-around">
+        <div class="col-md-4 p-4 bg-white">
             <form  action="/auth/login" method="POST">
                 <div class="form-group w-100">
                     <label for="username">Name</label>

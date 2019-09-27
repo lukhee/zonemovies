@@ -1,23 +1,45 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light px-3 py-3 row justify-content-between" >
-        <ul class="navbar-nav col-10  mx-3">
-                <li class="nav-item active"> <a class="navbar-link px-3 py-1" href="/allMovies">All Movies</a></li>
-            <% if(login) { %>
-                <li class="nav-item  "><a class="navbar-link px-3 py-1" href="/admin/allMovies">Admin Movies</a></li>
-                <li class="nav-item"><a class="navbar-link px-3 py-1" href="/admin/CreateMovie">Create movie</a></li>
-            <% } %>
-                <% if(!login) { %>
-                <li class="nav-item"><a class="navbar-link px-3 py-1" href="/auth/login">Login</a></li>
-            <% } else { %>
-                <li class="nav-item">
-                    <form action="/auth/logout" method="POST">
-                            <input type="submit" value="Logout" class="px-3 py-1 submit">
-                    </form>
+    <nav class="navbar navbar-expand-lg ">
+        <span class="navbar-brand mb-0 h1"><img src=".." width="30" height="30" alt="BeastCinema"></span>
+        <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link px-3 py-1" href="/allMovies"> Home <span class="sr-only">(current)</span></a>
                 </li>
-            <% } %>
-        </ul>
-        <form class="col text-right px-3">
-            <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-    </nav>
+                <li class="nav-item active">
+                    <a class="nav-link px-3 py-1" href="#"> Booking</a>
+                </li>
+                <% if(login) { %>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-1" href="/admin/allMovies">Admin Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-1" href="/admin/CreateMovie">Create Movie</a>
+                    </li>
+                <% } %>
+                <% if(!login) { %>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-1" href="/auth/login">Login</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <form action="/auth/logout" method="POST">
+                            <input type="submit" value="Logout" class="px-3 py-1 submit">
+                        </form>
+                    </li>
+                <% } %>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" style="position: relative">
+                <input id="search" class="form-control mr-sm-2" onkeyup="something()"  placeholder="Search" aria-label="Search">
+            <div class="search-list" id="searchList" >
+                <!-- search list DOM created in general.js -->
+            </div>
+            </form>
+        </div>
+    </nav> 
 </header>

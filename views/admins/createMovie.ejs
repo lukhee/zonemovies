@@ -1,10 +1,10 @@
 <% include ../partials/head %>
 <link rel="stylesheet" href="/styleSheet/login.css">
 </head>
-<body>
+<body class="container-fluid p-0" onload="loadData()">
     <% include ../partials/header %>
     <div class="row justify-content-center bg-dark">
-        <form class="w-50 p-3 bg-white my-4" action="createMovie" method="POST" enctype="multipart/form-data">
+        <form class=" col-sm-5 m-3 p-3 bg-white my-4" action="createMovie" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Movie Title</label>
                 <input type="text" class="form-control dark-bg form-control-sm" name="title" id="title"

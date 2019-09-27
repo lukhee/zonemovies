@@ -2,7 +2,7 @@ function countDown(){
 
 
     var deadline = new Date();
-    deadline.setSeconds(deadline.getSeconds() + 60);
+    deadline.setSeconds(deadline.getSeconds() + 20);
     var x = setInterval(function() { 
     var now = new Date(); 
     var t = deadline - now; 

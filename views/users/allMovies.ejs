@@ -1,12 +1,18 @@
 <% include ../partials/head %>
+<link rel="stylesheet" href="/stylesheet/comingSoon.css">
+<link rel="stylesheet" href="/stylesheet/owl.theme.default.min.css">
+<link rel="stylesheet" href="/stylesheet/owl.carousel.min.css">
 </head>
 
-    <body class="container-fluild bg-dark">
+    <body class="container-fluild bg-dark" onload="loadData()">
+        <span id='data' hidden>
+            <%= JSON.stringify(movies) %>
+        </span>
         <% include ../partials/header %>
         <section>
             <% include ../partials/carousel %>
             <div class="row justify-content-center p-4 text-white">
-                <div class="col-sm-2 text-right pr-0">
+                <div class="col-sm-2 text-right" style="margin-right: 30px">
                     <div class="days-select-div">
                     </div>
                     <div class="text-white text-right pr-0">
@@ -29,8 +35,12 @@
                 </div>
             </div>
         </section>
-        
-        <script src="/javascript/general.js"></script>
+        <section class="comingSoon text-dark bg-light">
+            something shoullt be here
+            <% include ../partials/comingSoonCard %>
+        </section>
+        <script src="/javascript/comingSoon.js"></script>
+        <script src="/javascript/owl.carousel.min.js"></script>
         <% include ../partials/script %>
     </body>
 </html>

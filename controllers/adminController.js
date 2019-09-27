@@ -90,7 +90,8 @@ exports.postEditMovie = (req, res, next)=>{
         description: req.body.description,
         price: req.body.price,
         imageURL: req.body.imageURL,
-        alt: req.body.alt
+        alt: req.body.alt,
+        days: ["monday", "wednesday", "thursday"]
     }
 
     db = getDb()

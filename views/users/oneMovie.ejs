@@ -2,7 +2,7 @@
  <link rel="stylesheet" href="/stylesheet/singleMovie.css">
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark p-0" onload="loadData()">
     <% include ../partials/header %>
     <div class="bg-dark" style="height: 400px "> 
         <img class="w-100 h-100" src="<%= movie.imageURL %>" alt="image hee">
@@ -42,7 +42,7 @@
                 </ul>
                 <a href="/movie/<%= movie._id %>/booked" class=" bottom-div px-3 w-100 mb-3 btn btns">Booked</a>
             </div>
-            <div class="col-12 preview row justify-content-center p-3">
+            <div class="col-md-8 preview row justify-content-center p-3">
                 <iframe frameBorder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe>
             </div>

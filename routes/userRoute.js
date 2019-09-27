@@ -4,7 +4,9 @@ const route = require("express").Router()
 
 route.get('/allMovies', userController.getAllMovies)
 
-route.get('/allMovies/:category', userController.getAllMoviesByCategory)
+route.get('/allMovies/:day', userController.getAllMoviesByDays)
+
+// route.get('/allMovies/:category', userController.getAllMoviesByCategory)
 
 route.get('/movie/:id', userController.getOneMovie)
 
