@@ -9,8 +9,6 @@ body{
     font-family: 'Lato', sans-serif;
 }
 
-
-
  * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -55,7 +53,7 @@ padding: 10px 0;
 color: #eeeeee
 }
 
-.days-li>li:hover, .cl{
+.days-li a:hover, .cl{
     color: #ff5733 !important;
 }
 
@@ -262,12 +260,27 @@ box-shadow: 0 0 0 0.2rem #ff57333d
     width: 25%;
 }
 
+.carousel-item {
+  transition-duration: 7s;
+}
+
+.footerContent:hover{
+    color: #ff5733
+}
+
+.footerContent{
+    color: grey
+}
 
 @media only screen and (max-width: 1000px) {
   .admin-cat{
       width: 50% !important;
       display: flex;
       justify-content: space-evenly
+    }
+
+    .preview>iframe {
+        width: 100%
     }
 }
 

@@ -3,8 +3,10 @@
 
 <body class="min-vh-100 bg-dark container-fluid p-0" onload="loadData()">
     <% include ../partials/header %>
+    <% if (movies.length >= 0){ %>
+    <h2 class="ml-4 mt-4 text-white"> <span class="underline">Now Showing</span></h2>
         <div class="card-panel bg-dark p-2">
-            <% movies.forEach(movie=>{ %>
+                <% movies.forEach(movie=>{ %>
                 <div class=" admin-cat">
                     <div class="m-3 bg-white rounded shadow movie-card">
                         <img class="w-100" style="height: 200px" src="<%= movie.imageURL %>" alt="image here">
@@ -27,7 +29,9 @@
                 </div>
             <% }) %>
         </div>
-    </section>
+        <% } else { %>
+        <h3 class="text-white ml-4 mt-4 "><span class="undeline">No Registered Movie Yet</span></h3>
+        <% } %>
     <% include ../partials/script %>
 </body>
 </html>

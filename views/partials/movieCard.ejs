@@ -15,11 +15,13 @@
                     <% for(var i = 0; i < 3; i++){ %>
                         <li class="mr-2 py-1 px-4 mt-1 rounded movieTime"><%=  movie.time[i] %></li>
                     <% } %>
-                    <li class="mr-2 py-1 ">More Time</li>
+                    <li class="mx-2 py-1 "><span> <a href="/movie/<%=movie._id %>" class="text-white a-title">
+                        <span class="font-weight-bold text-capitalize pt-0"> View More</span>
+                    </a></span></li>
                 </ul>
             </div>
-            <div class="card-footer txt-muted row justify-content-between bg-dark" style="margin-left: 0">
-                <button data-toggle="modal" data-target='#exampleModal<%=index%>' class="btns trailer rounded px-3 py-1">Trealer</button>
+            <div class="card-footer txt-muted row justify-content-between bg-dark" style="margin: 0 ">
+                <button data-toggle="modal" data-target='#exampleModal<%=index%>' class="btns trailer rounded px-3 py-1">Trailer</button>
                 <% include ./modal %>
                 <a href="/movie/<%= movie._id %>/booked" class="btns trailer rounded px-3 py-1">Booked</a>
             </div>
