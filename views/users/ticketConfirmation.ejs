@@ -1,0 +1,93 @@
+<% include ../partials/head %>
+<link rel="stylesheet" href="/styleSheet/login.css">
+</head>
+
+<body class="bg-dark p-0">
+    <% include ../partials/header.ejs %>
+    <section class="mt-3 mx-5 mb-2  row justify-content-around">
+        <div class="col-md-4 p-4 bg-white">
+            <h4 class="text-center">Ticket Verification</h4>
+            <form action="/ticketVerification" method="POST" class="mt-4">
+                <div class="form-group w-100">
+                    <input type="text" class="form-control form-control-sm" name="tokenId" placeholder="enter your ticket id"
+                        id="username">
+                </div>
+                <button type="submit" class="btn btn-sm button w-100">View</button>
+            </form>
+        </div>
+    </section>
+    <section>
+        <% if(login){ %>
+        <div class="row justify-content-center">
+            <form id="createMovieDiv" class="col-sm-4 row m-3 mb-0 p-3 bg-white my-4" action="viewTickets"
+                method="POST">
+                <select class="selectpicker form-control dark-bg form-control-sm col" data-style="btn-info" name="ticketLimit">
+                    <optgroup label="show day">
+                        <option value="">View Registed Tickets</option>
+                        <option value="10">First 10 ticket</option>
+                        <option value="20"> First 20 ticket</option>
+                    </optgroup>
+                </select>
+                <div class=" col">
+                    <button type="submit" class=" form-control; btn btn-sm button w-100">Submit</button>
+                </div>
+            </form>
+        </div>
+        <% } %>
+    </section>
+    <!-- ticket info -->
+    <section>
+        <% if(verify){ %>
+            <div class="row justify-content-center">
+            <% if(user){ %>
+                    <div class="col-md-5 bg-white rounded p-2 mb-5 mx-5">
+                        <h1 class="text-center"><%= user.movieCode %></h1>
+                        <div class="text-center"> <span class="rounded text-white px-3" style="background: #ff5733;"> Ticket ID </span>
+                        </div>
+                        <div class="row justify-content-around my-3 mx-3">
+                            <label class="col-2 text-muted p-1 "> Name : </label>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.name%>
+                            </div>
+                        </div>
+                        <div class="row justify-content-around my-3 mx-3">
+                            <label class="col-2 text-muted p-1"> Email : </label>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.email%>
+                            </div>
+                        </div>
+                        <div class="row justify-content-around my-3 mx-3">
+                            <label class="col-2 text-muted p-1"> Movie : </label>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo">
+                                <%=user.movieTitle%></div>
+                        </div>
+                        <div class="row justify-content-around my-3 mx-3">
+                            <label class="col-2 text-muted p-1"> Day : </label>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.day%>
+                            </div>
+                        </div>
+                        <div class="row justify-content-around my-3 mx-3 mb-4">
+                            <label class="col-2 text-muted p-1"> Time : </label>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.time%>
+                            </div>
+                        </div>
+                        <div class="text-center my-3 mx-3">
+                            <a class=" btn btns w-100 font-weight-bold" href="/allmovies"> Leave Page </a>
+                        </div>
+                        <div style="font-size: 12px;" class="text-center mb-4 font-weight-bold"><span
+                                style=" border-bottom: 1px solid #ff5733"> Notice : The movie detail is also sent to your mail </span>
+                        </div>
+            <% } else { %>
+                    <div class="col-md-4 bg-white rounded p-2 mb-5 text-center font-weight-bold" style="color: #ff5733; font-size: 14px"> <p class="pb-0"> <%= errorMessage %> </p></div>
+                </div>
+            <% } %>
+        <% } %>
+    </section>
+    <!-- list ticket -->
+    <section>
+        <% if(tickets){ %>
+            <% include ../partials/ticketList %>
+        <% } %>
+    </section>
+    <% include ../partials/script %>
+</body>
+
+</html>

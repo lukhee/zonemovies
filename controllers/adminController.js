@@ -5,18 +5,28 @@ let db;
 let login
 
 exports.getAllMovies = (req, res, next)=>{
+    let movies = []
+    let comingSoon = [];
     login = req.session.isloggedin
     db = getDb()
     db.collection("movies")
     .find().toArray()
-    .then(movies=>{
-        res.render("admins/homePage", { movies: movies, title: "admin HomePage", login: login})
+    .then(result=>{
+        console.log(result)
+        result.forEach(movie => {
+            if(movie.category == "nowShowing"){
+                movies.push(movie)
+            }else{
+                comingSoon.push(movie)
+             }
+        });
+        res.render("admins/homePage", { movies: movies, comingSoon:comingSoon, title: "admin HomePage", login: login})
     })
     .catch(err=>{
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 
@@ -30,8 +40,10 @@ exports.createMovie = (req, res, next) => {
 }
 
 exports.postCreateMovie = ( req, res, next ) => {
+    let category = req.params.category
     db = getDb()
     let movieDetails = {
+        category : category,
         title: req.body.title,
         description: req.body.description,
         releasedDate: req.body.releasedDate,
@@ -39,30 +51,40 @@ exports.postCreateMovie = ( req, res, next ) => {
         genre: req.body.genre,
         price: req.body.price,
         time: [req.body.movieTime1, req.body.movieTime2, req.body.movieTime3, req.body.movieTime4, req.body.movieTime5, req.body.movieTime6],
+        days: req.body.movieDay1,
         imageURL: req.body.imageURL,
         download: req.file,
         altImageName: req.body.altImageName,
         imageURL2: req.body.imageURL2
+
     }
 
-
-    if(!req.file){
+    if (!req.file) {
         delete movieDetails.download
     } else {
         movieDetails.download = req.file.path
     }
-        db.collection("movies")
-            .insertOne(movieDetails)
-            .then(result => {
-                console.log("created movie successfully")
-                res.redirect('/admin/allMovies')
-            })
-            .catch(err => {
-                console.log(err)
-                const error = new Error(err)
-                error.httpStatusCode = 500;
-                return next(error)
-            })
+
+    res.send(movieDetails)
+
+        if (category == "comingSoon") {
+            delete movieDetails.price;
+            delete movieDetails.time
+            delete movieDetails.altImageName
+            delete movieDetails.imageURL2
+        }
+            db.collection ("movies")
+                .insertOne(movieDetails)
+                .then(result => {
+                    console.log("created movie successfully")
+                    res.redirect('/admin/allMovies')
+                })
+                .catch(err => {
+                    console.log(err)
+                    const error = new Error(err)
+                    error.httpStatusCode = 500;
+                    // return next(error)
+                })
 }
 
 exports.editMovie = (req, res, next) => {
@@ -78,7 +100,7 @@ exports.editMovie = (req, res, next) => {
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 
@@ -106,7 +128,7 @@ exports.postEditMovie = (req, res, next)=>{
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 
@@ -123,7 +145,7 @@ exports.deleteMovie = (req, res, next) => {
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 

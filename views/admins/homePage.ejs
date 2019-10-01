@@ -3,35 +3,71 @@
 
 <body class="min-vh-100 bg-dark container-fluid p-0" onload="loadData()">
     <% include ../partials/header %>
-    <% if (movies.length >= 0){ %>
-    <h2 class="ml-4 mt-4 text-white"> <span class="underline">Now Showing</span></h2>
+    <section>
+        <h2 class="ml-4 mt-4 text-white"> <span class="underline">Now Showing</span></h2>
+        <% if (movies.length >= 0){ %>
         <div class="card-panel bg-dark p-2">
-                <% movies.forEach(movie=>{ %>
-                <div class=" admin-cat">
-                    <div class="m-3 bg-white rounded shadow movie-card">
-                        <img class="w-100" style="height: 200px" src="<%= movie.imageURL %>" alt="image here">
-                        <div class="p-2 text-center">
-                            <h4><%= movie.title %></h4>
-                            <p class=" short-p text-muted"><%= movie.description %></p>
-                            <div class="d-flex justify-content-between">
-                                <h5 class="text-muted"> <%= movie.genre %> </h5>
-                                <h5 class="text-muted"><%= movie.price %></h5>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-2">
-                            <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a>
-                            <form action="/admin/deleteMovie" method="POST">
-                                <input type="hidden" name="id" value="<%= movie._id %>">
-                                <input type="submit" value="Delete" class="btn btns  btn-sm px-5">
-                            </form>
+            <% movies.forEach(movie=>{ %>
+            <div class=" admin-cat">
+                <div class="m-3 bg-white rounded shadow movie-card">
+                    <img class="w-100" style="height: 200px" src="<%= movie.imageURL %>" alt="image here">
+                    <div class="p-2 text-center">
+                        <h4><%= movie.title %></h4>
+                        <p class=" short-p text-muted"><%= movie.description %></p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="text-muted"> <%= movie.genre %> </h5>
+                            <h5 class="text-muted"><%= movie.price %></h5>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-between p-2">
+                        <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a>
+                        <form action="/admin/deleteMovie" method="POST">
+                            <input type="hidden" name="id" value="<%= movie._id %>">
+                            <input type="submit" value="Delete" class="btn btns  btn-sm px-5">
+                        </form>
+                    </div>
                 </div>
+            </div>
             <% }) %>
         </div>
         <% } else { %>
-        <h3 class="text-white ml-4 mt-4 "><span class="undeline">No Registered Movie Yet</span></h3>
+            <p class="text-white ml-4 mt-4 "><span class="undeline">No Registered Movie Yet</span></p>
         <% } %>
+    </section>
+    
+<!-- coming soon page -->
+    <section class="mb-4 ">
+        <h2 class="ml-4 mt-4 text-white"> <span class="underline">Coming Soon</span></h2>
+        <% if (comingSoon.length != 0){ %>
+        <div class="card-panel bg-dark p-2">
+            <% comingSoon.forEach(movie=>{ %>
+            <div class=" admin-cat">
+                <div class="m-3 bg-white rounded shadow movie-card">
+                    <img class="w-100" style="height: 200px" src="<%= movie.imageURL %>" alt="image here">
+                    <div class="p-2 text-center">
+                        <h4><%= movie.title %></h4>
+                        <p class=" short-p text-muted"><%= movie.description %></p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="text-muted"> <%= movie.genre %> </h5>
+                            <!-- <h5 class="text-muted"><%= movie.price %></h5> -->
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between p-2">
+                        <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a>
+                        <form action="/admin/deleteMovie" method="POST">
+                            <input type="hidden" name="id" value="<%= movie._id %>">
+                            <input type="submit" value="Delete" class="btn btns  btn-sm px-5">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <% } else { %>
+        <p class="text-white ml-4 mt-4 "><span class="undeline">No Registered Movie Yet</span></p>
+        <% } %>
+    </section>
+    <% include ../partials/footer %>
     <% include ../partials/script %>
 </body>
 </html>

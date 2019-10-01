@@ -18,7 +18,7 @@ exports.getAllMovies = (req, res, next)=>{
     login = req.session.isloggedin
     let carousel = [],
     db = getDb();
-    db.collection("movies").find().toArray()
+    db.collection("movies").find({ category: "nowShowing" }).toArray()
     .then(movies=>{
         movies.forEach(image=>{
             carousel.push(image.imageURL)
@@ -30,7 +30,7 @@ exports.getAllMovies = (req, res, next)=>{
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 
@@ -39,7 +39,7 @@ exports.getAllMoviesByDays = (req, res, next) => {
     login = req.session.isloggedin
     let carousel = [],
         db = getDb();
-    db.collection("movies").find({days: days}).toArray()
+    db.collection("movies").find({days: days, category: "nowShowing"}).toArray()
         .then(movies => {
             movies.forEach(image => {
                 carousel.push(image.imageURL)
@@ -51,7 +51,7 @@ exports.getAllMoviesByDays = (req, res, next) => {
             console.log(err)
             const error = new Error(err)
             error.httpStatusCode = 500;
-            return next(error)
+            // return next(error)
         })
 }
 
@@ -59,7 +59,7 @@ exports.getOneMovie = (req, res, next) => {
     let id = req.params.id
     console.log(id)
     db = getDb();
-    db.collection("movies").find({_id : new Object(id)})
+    db.collection("movies").find({_id : new Object(id) })
     .next()
     .then(movie=>{
     res.render("users/oneMovie", { login: login, movie: movie})
@@ -68,7 +68,7 @@ exports.getOneMovie = (req, res, next) => {
         console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
-        return next(error)
+        // return next(error)
     })
 }
 
@@ -79,13 +79,36 @@ exports.bookedMovie = (req, res, next) => {
     db.collection("movies").find({_id : new Object(id)})
     .next()
     .then(movie => {
-        res.render("users/book", { login: login, movie: movie })
+        res.render("users/book", { login: login, movie: movie})
     })
     .catch(err=>{
         console.log(err)
         // const error = new n
     })
     
+}
+
+exports.checkBookedPage = (req, res, next)=>{
+    let login = req.session.isloggedin
+    res.render("users/ticketConfirmation", { login: login, verify: false, tickets: false })
+}
+
+exports.verifyTicket = (req, res, next)=>{
+    let token = Number(req.body.tokenId)
+    let login = req.session.isloggedin
+    db = getDb()
+    db.collection('tickets').find({ movieCode: token}).toArray()
+    .then(result=>{
+        console.log(login)
+        if(result.length >= 1){
+            return res.render("users/ticketConfirmation", { login: login, verify: true, user: result[0], tickets: false})
+        } else{
+            return res.render("users/ticketConfirmation", { login: login, verify: true, tickets: false, user: false, errorMessage: `no user found for ID : ${req.body.tokenId}`})
+        }
+    })
+    .catch(error=>{
+        console.log(error)
+    })
 }
 
 exports.postBookedMovie = (req, res, next) => {
@@ -120,6 +143,35 @@ exports.postBookedMovie = (req, res, next) => {
              }).catch(err=>{
                  console.log(err)
              })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+exports.viewTickets = (req, res, next)=>{
+    let db = getDb()
+    login = req.session.isloggedin
+    let ticketLimit = Number(req.body.ticketLimit)
+    db.collection("tickets").find().limit(ticketLimit).toArray()
+        .then(tickets => {
+            res.render("users/ticketConfirmation", { login: login, verify: false, tickets : tickets })
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+}
+
+exports.deleteTicket = (req, res, next)=>{
+    let db = getDb()
+    login = req.session.isloggedin
+    let id = req.body.id
+    db.collection("tickets").deleteOne({_id : new ObjectID(id)})
+        .then(deletedTicket => {
+            console.log(deletedTicket)
+            return db.collection("tickets").find().toArray()
+        }).then(tickets=>{
+            res.render("users/ticketConfirmation", { login: login, verify: false, tickets: tickets })
         })
         .catch(err => {
             console.log(err)

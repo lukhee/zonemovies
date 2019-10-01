@@ -180,9 +180,11 @@ a:hover, .btns:hover {
     text-decoration: none !important;
 }
 
-.trailer:hover, .btns:hover{
-    color: white;
-    background: #ff5733;
+.trailer:hover, .btns:hover, .movieCat{
+    color: white !important;
+    background: #ff5733 !important;
+    font-weight: 600  !important;
+    cursor: pointer;
 }
 
 .title{
@@ -222,10 +224,15 @@ box-shadow: 0 0 0 0.2rem #ff57333d
 }
 
 .movie-card{
-    position: relative;
     max-width: 280px;
     min-height: 300px;
     overflow: hidden;
+}
+
+.ticket-card{
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px grey;
 }
 
 .search-list{

@@ -71,10 +71,10 @@ app.use('/', userRoute)
 //     res.send("error 404 page not found")
 // })
 
-app.use((error, req, res, next)=>{
-    console.log("error found in error route")
-    res.redirect("/error500")
-})
+// app.use((error, req, res, next)=>{
+//     console.log("error found in error route")
+//     res.redirect("/error500")
+// })
 
 mongoConnect(mongo, ()=>{
 console.log("mongodb connected")

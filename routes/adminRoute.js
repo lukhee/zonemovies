@@ -8,7 +8,7 @@ route.get('/movie', auth, adminController.getOneMovie)
 
 route.get('/createMovie', auth, adminController.createMovie)
 
-route.post('/createMovie', adminController.postCreateMovie)
+route.post('/createMovie/:category', adminController.postCreateMovie)
 
 route.get('/editMovie/:id', auth, adminController.editMovie)
 

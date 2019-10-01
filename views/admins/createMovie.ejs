@@ -4,7 +4,15 @@
 <body class="container-fluid p-0" onload="loadData()">
     <% include ../partials/header %>
     <div class="row justify-content-center bg-dark">
-        <form class=" col-sm-5 m-3 p-3 bg-white my-4" action="createMovie" method="POST" enctype="multipart/form-data">
+        <form id="createMovieDiv" class="col-sm-5 m-3 p-3 bg-white my-4" action="createMovie/nowShowing" method="POST" enctype="multipart/form-data">
+            <div class="col-12 row justify-content-between p-0 mx-0 my-3">
+                <div id="nowShowing" onclick="switchBetweenCat(1)" class="col-5 btn text-center btn-sm movieCat text-capitalize ">
+                    now showing
+                </div>
+                <div id="comingSoonDiv" onclick="switchBetweenCat(2)" class="col-5 btn text-center button  btn-sm text-capitalize">
+                    coming soon
+                </div>
+            </div>
             <div class="form-group">
                 <label for="title">Movie Title</label>
                 <input type="text" class="form-control dark-bg form-control-sm" name="title" id="title"
@@ -26,13 +34,44 @@
                 <label for="genre">Genre</label>
                 <input type="text" class="form-control dark-bg form-control-sm" name="genre" id="genre" placeholder="genre here">
             </div>
-            <div class="form-group">
+            <div  class="form-group comingSoon">
                 <label for="price">Price</label>
                 <input type="number" class="form-control dark-bg form-control-sm"name="price" id="price" placeholder="movie price">
             </div>
-            <div>
-                <label for="inputAddress">Show time</label>
-                <div class="form-row time1 mb-2">
+            <div >
+                <label for="inputAddress" class="comingSoon">Show Day</label>
+                <div class="form-row time1 mb-2 comingSoon">
+                    <div class="col">
+                        <select class="selectpicker form-control dark-bg form-control-sm" data-style="btn-info" name="movieDay1">
+                            <optgroup label="show day">
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="selectpicker form-control dark-bg form-control-sm" data-style="btn-info" name="movieDay1">
+                            <optgroup label="show day">
+                                <option value="wedneday">Wednesday</option>
+                                <option value="thurday">Thursday</option>
+                                <option value="friday">friday</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="selectpicker form-control dark-bg form-control-sm" data-style="btn-info" name="movieDay1">
+                            <optgroup label="show day">
+                                <option value="friday">Fiday</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="inputAddress" class="comingSoon">Show time</label>
+                <div class="form-row time1 mb-2 comingSoon">
                     <div class="col">
                         <input type="time" name="movieTime1" class="form-control dark-bg form-control-sm">
                     </div>
@@ -43,7 +82,7 @@
                         <input type="time" name="movieTime3" class="form-control dark-bg form-control-sm">
                     </div>
                 </div>
-                <div class="form-row time mb-2">
+                <div class="form-row time mb-2 comingSoon">
                     <div class="col">
                         <input type="time" name="movieTime4"  class="form-control dark-bg form-control-sm">
                     </div>
@@ -58,16 +97,15 @@
                     <label for="image">Image Download</label>
                     <input type="text" name="imageURL" class="form-control dark-bg form-control-sm" id="image" placeholder="image url">
                 </div>
-                <div class="form-row time mb-1">
+                <div class="form-row time mb-1 comingSoon">
                     <div class="col">
                         <input type="file" class="form-control dark-bg-file form-control-sm" name="downloadImage" >
-                        
                     </div>
                     <div class="col">
                         <input type="text" name="altImageName" placeholder="image alternative name" class="form-control dark-bg form-control-sm dark-bg-sm form-control">
                     </div>
                 </div>
-                <div class="form-group">
+                <div  class="form-group comingSoon">
                     <label for="image">Image Download2</label>
                     <input type="text" name="imageURL2" class="form-control dark-bg form-control-sm" id="image" placeholder="image url2">
                 </div>
@@ -77,6 +115,7 @@
             </div>
         </form>
     </div>
+    <script src="/javascript/adminPage.js"></script>
     <% include ../partials/script %>
 </body>
 </html>
