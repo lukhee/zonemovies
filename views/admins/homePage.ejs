@@ -30,7 +30,7 @@
             </div>
             <% }) %>
         </div>
-        <% } else { %>
+        <% } else { %> 
             <p class="text-white ml-4 mt-4 "><span class="undeline">No Registered Movie Yet</span></p>
         <% } %>
     </section>
@@ -49,11 +49,11 @@
                         <p class=" short-p text-muted"><%= movie.description %></p>
                         <div class="d-flex justify-content-between">
                             <h5 class="text-muted"> <%= movie.genre %> </h5>
-                            <!-- <h5 class="text-muted"><%= movie.price %></h5> -->
+                            <h5 class="text-muted"><%= movie.releasedDate %></h5>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between p-2">
-                        <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a>
+                    <div class="d-flex justify-content-center p-2">
+                        <!-- <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a> -->
                         <form action="/admin/deleteMovie" method="POST">
                             <input type="hidden" name="id" value="<%= movie._id %>">
                             <input type="submit" value="Delete" class="btn btns  btn-sm px-5">

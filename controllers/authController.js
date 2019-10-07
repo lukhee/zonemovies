@@ -1,12 +1,12 @@
 const getDb = require("../util/db").getDb
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 const saltRounds = 10;
 let db;
 
 
 exports.getLogin = (req, res, next) => {
     let login = req.session.isloggedin
-    res.render("auth/login", {login: login})
+    res.render("auth/login", { login: login, errorMessage: false })
 }
 
 exports.createLogin = (req, res, next)=>{
@@ -39,27 +39,21 @@ exports.postLogin = (req, res, next)=>{
     db.collection('admin').find({username : admin.username})
     .next()
     .then(user=>{
-        console.log(user)
-        console.log(admin.password)
         if(!user){
             return user
         }
         return bcrypt.compare(admin.password, user.password)
     })
     .then(password=>{
-        console.log(password)
         if (password) {
-            console.log(password)
             req.session.isloggedin = true
-            console.log(req.session)
             res.redirect("/admin/allMovies") 
         } else {
             let login = req.session.isloggedin
-            res.render('auth/login', { login: login })
+            res.render('auth/login', { login: login, errorMessage: "user not found!!!" })
         }
     })
     .catch(err=>{
-        console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
         // return next(error)
@@ -69,7 +63,6 @@ exports.postLogin = (req, res, next)=>{
 exports.logout = (req, res, next)=>{
     req.session.destroy((err)=>{
         let login = req.session
-        console.log(login)
-        res.render("auth/login", {login: login })
+        res.render("auth/login", { login: login, errorMessage: false })
     })
 }

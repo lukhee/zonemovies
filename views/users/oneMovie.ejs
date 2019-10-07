@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-12 p-4">
-                    <a href="/movie/<%= movie._id %>/booked" class=" bottom-div px-3 w-100 mb-3 btn btns">Booked</a>
+                    <a href="/movie/<%= movie._id %>/booked" class="font-weight-bold bottom-div px-3 w-100 btn btns">Booked</a>
                 </div>
                 <div class="col-md-12 preview mb-3 row justify-content-center p-3">
                     <iframe frameBorder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY">
@@ -51,9 +51,16 @@
             </div>
         </div>
     </div>
-        <section class="comingSoon" style="background: #2f343a">
-            <% include ../partials/comingSoonCard %>
-        </section>
+    <section class="comingSoon"  style="background: #2f343a">
+        <% if(comingSoon.length >= 4){ %>
+        <% include ../partials/comingSoonCard %>
+        <% } else {%>
+        <div class="p-3">
+            <h3 class="text-white">No data for comingsoon yet</h3>
+            <p class="text-muted">or data found is not up to 4 yet</p>
+        </div>
+        <% } %>
+    </section>
         <% include ../partials/footer %>
     <% include ../partials/script %>
 </body>

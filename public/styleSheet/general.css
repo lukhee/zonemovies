@@ -18,6 +18,11 @@ body{
     color: #ffffff99;
 }
 
+a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
 .days-select-div{
     background: black;
     opacity: 0.1;
@@ -29,9 +34,9 @@ body{
 }
 
  .under, .underline{
-       text-decoration: none; 
-       position: relative; 
-     } 
+    text-decoration: none; 
+    position: relative; 
+} 
 
 .under::before{
     content: "";
@@ -46,11 +51,11 @@ color: white;
 }
 
 .days-li>li{
-font-size: 15px;
-font-weight: 600;
-cursor: pointer;
-padding: 10px 0;
-color: #eeeeee
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 0;
+    color: #eeeeee
 }
 
 .days-li a:hover, .cl{
@@ -276,7 +281,34 @@ box-shadow: 0 0 0 0.2rem #ff57333d
 }
 
 .footerContent{
-    color: grey
+    color: white
+}
+
+.comingSoonTrailer{
+    position:absolute; 
+    font-size: 17px; 
+    font-weight: 700; 
+    background: #000000c7; 
+    text-align: center; 
+    bottom: 0; 
+    right: 0; 
+    left:0;
+}
+
+.comingSoonTrailer > a{
+    color: white;
+}
+  
+.comingSoonTrailer > a:hover{
+    color: white;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    width: 4% !important;
+}
+
+.comingSoonTrailer:hover{
+    background: #ff5733;
 }
 
 @media only screen and (max-width: 1000px) {

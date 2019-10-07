@@ -2,83 +2,72 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="row justify-content-around m-2" style="width: 100%;">
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000368?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1">
-                        <div class=" text-white p-3 mx-3 mb-3" style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                            <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
+                <% for(var i = 0; i < 4 ; i++){ %>
+                    <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
+                        <img class="w-100 h-100 rounded"
+                            src="<%= comingSoon[i].imageURL %>"
+                            class="d-block w-100" alt="image 1">
+                        <div class=" text-white p-3 mx-3 mb-3 comingSoonTrailer">
+                            <!-- <a style="font-size: 17px; font-weight: 700" href="/movie/<%=comingSoon[i]._id %>">Trailer</a> -->
+                            <div data-toggle="modal" data-target='#exampleModalCS<%=i%>' class="rounded px-3 py-1" style="cursor: pointer">
+                                Trailer
+                            </div>
+                                <!-- coming soon modal-->
+                            <div class="modal fade" id='exampleModalCS<%=i%>' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-capitalize" id="exampleModalLabel"><%=comingSoon[i].title %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe frameBorder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                            </iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000407?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1"> 
-                        <div class=" text-white p-3 mx-3 mb-3"
-                            style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                                <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                        </div>
-                </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000403?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1"> 
-                        <div class=" text-white p-3 mx-3 mb-3"
-                            style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;"> 
-                            <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                        </div>
-                </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000410?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1"> 
-                    <div class=" text-white p-3 mx-3 mb-3"
-                        style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;"> 
-                        <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                        </div>
-                </div>
+                    </div>
+                <% } %>
             </div>
         </div>
+        <% if(comingSoon.length >= 4) { %>
         <div class="carousel-item">
             <div class="row justify-content-around m-2" style="width: 100%;">
+                <% for(var i = 4; i < 8 ; i++){ %>
                 <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000418?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1">
-                    <div class=" text-white p-3 mx-3 mb-3"
-                        style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                        <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
+                    <img class="w-100 h-100 rounded" src="<%= comingSoon[i].imageURL %>" class="d-block w-100" alt="image 1">
+                    <div class=" text-white p-3 mx-3 mb-3 comingSoonTrailer">
+                        <!-- <a style="font-size: 17px; font-weight: 700" href="/movie/<%=comingSoon[i]._id %>">Trailer</a> -->
+                        <div data-toggle="modal" data-target='#exampleModalCS<%=i%>' class="rounded px-3 py-1" style="cursor: pointer">Trailer</div>
+                        <!-- coming soon modal -->
+                        <div class="modal fade" id='exampleModalCS<%=i%>' tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content bg-dark">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-capitalize" id="exampleModalLabel"><%=comingSoon[i].title %></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe frameBorder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000406?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1">
-                    <div class=" text-white p-3 mx-3 mb-3"
-                        style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                        <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000405?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1">
-                    <div class=" text-white p-3 mx-3 mb-3"
-                        style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                        <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 p-3" style="max-height: 300px; position: relative">
-                    <img class="w-100 h-100 rounded"
-                        src="https://tickets.filmhouseng.com/CDN/media/entity/get/FilmPosterGraphic/HO00000414?referenceScheme=HeadOffice&allowPlaceHolder=true"
-                        class="d-block w-100" alt="image 1">
-                    <div class=" text-white p-3 mx-3 mb-3"
-                        style="position:absolute; font-size: 17px; font-weight: 700; background: #000000c7; text-align: center; bottom: 0; right: 0; left:0;">
-                        <a style="color: white; font-size: 17px; font-weight: 700" href="#">Trailer</a>
-                    </div>
-                </div>
+                <% } %>
             </div>
         </div>
+        <% } %>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

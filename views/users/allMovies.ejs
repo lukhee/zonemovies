@@ -27,20 +27,34 @@
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <% movies.forEach(function(movie, index){ %>
-                    <div class="movie">
-                        <% include ../partials/movieCard %>
-                    </div>
-                    <% }) %>
+                    <% if(movies.length > 0) {%>
+                        <% movies.forEach(function(movie, index){ %>
+                        <div class="movie">
+                            <% include ../partials/movieCard %>
+                        </div>
+                        <% }) %>
+                    <% }else { %>
+                        <div>
+                            <h2> No movie registered yet</h2>
+                        </div>
+                       <% } %>
+                   
                 </div>
             </div>
         </section>
         <section class="comingSoon">
-            <% include ../partials/comingSoonCard %>
+            <% if(comingSoon.length >= 4){ %>
+                <% include ../partials/comingSoonCard %>
+            <% } else {%>
+                <div class="p-3">
+                    <h3 class="text-white">No data for comingsoon yet</h3>
+                    <p class="text-muted">or data found is not up to 4 yet</p>
+                </div>
+            <% } %>
         </section>
             <% include ../partials/footer %>
         <script src="/javascript/comingSoon.js"></script>
         <script src="/javascript/owl.carousel.min.js"></script>
         <% include ../partials/script %>
     </body>
-</html>
+</html>s

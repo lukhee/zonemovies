@@ -23,7 +23,9 @@
             <div class="card-footer txt-muted row justify-content-between bg-dark" style="margin: 0 ">
                 <button data-toggle="modal" data-target='#exampleModal<%=index%>' class="btns trailer rounded px-3 py-1">Trailer</button>
                 <% include ./modal %>
-                <a href="/movie/<%= movie._id %>/booked" class="btns trailer rounded px-3 py-1">Booked</a>
+                <div>
+                    <a href="/movie/<%= movie._id %>/booked" class="btns trailer rounded px-3 py-1">Booked</a>
+                </div>
             </div>
         </div>
     </div>

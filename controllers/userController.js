@@ -18,13 +18,17 @@ exports.getAllMovies = (req, res, next)=>{
     login = req.session.isloggedin
     let carousel = [],
     db = getDb();
+    let movies
     db.collection("movies").find({ category: "nowShowing" }).toArray()
-    .then(movies=>{
-        movies.forEach(image=>{
+    .then(nowShowing=>{
+        nowShowing.forEach(image=>{
             carousel.push(image.imageURL)
         })
-        console.log(movies)
-        res.render("users/allMovies", { movies: movies, time: movies.time, carousel: carousel, title: "user page", login: login})
+        movies = nowShowing
+        return db.collection("movies").find({ category: "comingSoon" }).limit(8).toArray()
+        })
+        .then(comingSoon=>{
+            res.render("users/allMovies", { movies: movies, comingSoon: comingSoon, time: movies.time, carousel: carousel, title: "user page", login: login })
     })
     .catch(err=>{
         console.log(err)
@@ -34,42 +38,48 @@ exports.getAllMovies = (req, res, next)=>{
     })
 }
 
-exports.getAllMoviesByDays = (req, res, next) => {
-    let days = req.params.day 
-    login = req.session.isloggedin
-    let carousel = [],
-        db = getDb();
-    db.collection("movies").find({days: days, category: "nowShowing"}).toArray()
-        .then(movies => {
-            movies.forEach(image => {
-                carousel.push(image.imageURL)
-            })
-            console.log(movies)
-            res.render("users/allMovies", { movies: movies, time: movies.time, carousel: carousel, title: "user page", login: login })
+exports.getOneMovie = (req, res, next) => {
+    let id = req.params.id
+    let movie
+    db = getDb();
+    db.collection("movies").find({ _id: new Object(id) })
+        .next()
+        .then(movieResult => {
+            movie = movieResult
+            return db.collection("movies").find({ category: "comingSoon" }).limit(8).toArray()
+        })
+        .then(comingSoon => {
+            res.render("users/oneMovie", { login: login, movie: movie, comingSoon: comingSoon })
         })
         .catch(err => {
-            console.log(err)
             const error = new Error(err)
             error.httpStatusCode = 500;
             // return next(error)
         })
 }
 
-exports.getOneMovie = (req, res, next) => {
-    let id = req.params.id
-    console.log(id)
-    db = getDb();
-    db.collection("movies").find({_id : new Object(id) })
-    .next()
-    .then(movie=>{
-    res.render("users/oneMovie", { login: login, movie: movie})
+exports.getAllMoviesByDays = (req, res, next) => {
+    let days = req.params.day 
+    login = req.session.isloggedin
+    let carousel = []
+    let comingSoon
+        db = getDb();
+    db.collection("movies").find({ category: "comingSoon" }).limit(8).toArray()
+    .then(result=>{
+        comingSoon = result
+        return db.collection("movies").find({ days: days, category: "nowShowing" }).toArray()
     })
-    .catch(err=>{
-        console.log(err)
-        const error = new Error(err)
-        error.httpStatusCode = 500;
-        // return next(error)
-    })
+        .then(movies => {
+            movies.forEach(image => {
+                carousel.push(image.imageURL)
+            })
+            res.render("users/allMovies", { movies: movies, time: movies.time, comingSoon: comingSoon, carousel: carousel, title: "user page", login: login })
+        })
+        .catch(err => {
+            const error = new Error(err)
+            error.httpStatusCode = 500;
+            // return next(error)
+        })
 }
 
 exports.bookedMovie = (req, res, next) => {
@@ -82,7 +92,6 @@ exports.bookedMovie = (req, res, next) => {
         res.render("users/book", { login: login, movie: movie})
     })
     .catch(err=>{
-        console.log(err)
         // const error = new n
     })
     
@@ -99,7 +108,6 @@ exports.verifyTicket = (req, res, next)=>{
     db = getDb()
     db.collection('tickets').find({ movieCode: token}).toArray()
     .then(result=>{
-        console.log(login)
         if(result.length >= 1){
             return res.render("users/ticketConfirmation", { login: login, verify: true, user: result[0], tickets: false})
         } else{
@@ -107,7 +115,6 @@ exports.verifyTicket = (req, res, next)=>{
         }
     })
     .catch(error=>{
-        console.log(error)
     })
 }
 
@@ -145,7 +152,6 @@ exports.postBookedMovie = (req, res, next) => {
              })
         })
         .catch(err => {
-            console.log(err)
         })
 }
 
@@ -158,7 +164,6 @@ exports.viewTickets = (req, res, next)=>{
             res.render("users/ticketConfirmation", { login: login, verify: false, tickets : tickets })
     })
     .catch(err=>{
-        console.log(err)
     })
 }
 
@@ -168,12 +173,10 @@ exports.deleteTicket = (req, res, next)=>{
     let id = req.body.id
     db.collection("tickets").deleteOne({_id : new ObjectID(id)})
         .then(deletedTicket => {
-            console.log(deletedTicket)
             return db.collection("tickets").find().toArray()
         }).then(tickets=>{
             res.render("users/ticketConfirmation", { login: login, verify: false, tickets: tickets })
         })
         .catch(err => {
-            console.log(err)
         })
 }

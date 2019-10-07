@@ -10,6 +10,9 @@ const mongo = require('mongodb').MongoClient
 var session = require('express-session')
 const mongoStore = require("connect-mongodb-session")(session)
 const mongoConnect = require('./util/db').mongoConnect
+const db = require('./util/db').getDb
+const ObjectID = require("mongodb").ObjectID
+const bcrypt = require('bcrypt');
 // const { initializePayment, verifyPayment } = require('./config/paystack')(request);
 const app = express()
 
@@ -77,8 +80,25 @@ app.use('/', userRoute)
 // })
 
 mongoConnect(mongo, ()=>{
-console.log("mongodb connected")
+    bcrypt.hash("password", 10)
+        .then(password => {
+            return db().collection("admin").findOneAndUpdate(
+                { username: "admin" },
+                {
+                    $setOnInsert: { username: "admin", password: password },
+                },
+                {
+                    returnOriginal: false,
+                    upsert: true,
+                }
+            )
+        })
+        .then(result=>{
+            console.log(result)
+        })
+    console.log("connection successful!!")
 })
+
 
 app.listen(PORT, ()=>{
     console.log(`app listen at port ${PORT}`)

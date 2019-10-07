@@ -23,7 +23,7 @@
                 method="POST">
                 <select class="selectpicker form-control dark-bg form-control-sm col" data-style="btn-info" name="ticketLimit">
                     <optgroup label="show day">
-                        <option value="">View Registed Tickets</option>
+                        <option value="">View All Tickets</option>
                         <option value="10">First 10 ticket</option>
                         <option value="20"> First 20 ticket</option>
                     </optgroup>
@@ -40,33 +40,32 @@
         <% if(verify){ %>
             <div class="row justify-content-center">
             <% if(user){ %>
-                    <div class="col-md-5 bg-white rounded p-2 mb-5 mx-5">
+                    <div class="col-md-5 bg-white rounded p-2 mb-5 mx-3">
                         <h1 class="text-center"><%= user.movieCode %></h1>
                         <div class="text-center"> <span class="rounded text-white px-3" style="background: #ff5733;"> Ticket ID </span>
                         </div>
                         <div class="row justify-content-around my-3 mx-3">
                             <label class="col-2 text-muted p-1 "> Name : </label>
-                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.name%>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo" style="font-size: 13px"> <%=user.name%>
                             </div>
                         </div>
                         <div class="row justify-content-around my-3 mx-3">
                             <label class="col-2 text-muted p-1"> Email : </label>
-                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.email%>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 ticketInfo" style="font-size: 13px"> <%=user.email%>
                             </div>
                         </div>
                         <div class="row justify-content-around my-3 mx-3">
                             <label class="col-2 text-muted p-1"> Movie : </label>
-                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo">
-                                <%=user.movieTitle%></div>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo" style="font-size: 13px"> <%=user.movieTitle%></div>
                         </div>
                         <div class="row justify-content-around my-3 mx-3">
                             <label class="col-2 text-muted p-1"> Day : </label>
-                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.day%>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo" style="font-size: 13px"> <%=user.day%>
                             </div>
                         </div>
                         <div class="row justify-content-around my-3 mx-3 mb-4">
                             <label class="col-2 text-muted p-1"> Time : </label>
-                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo"> <%=user.time%>
+                            <div class="col-9 p-1 bg-light rounded font-weight-bold px-2 text-capitalize ticketInfo" style="font-size: 13px"> <%=user.time%>
                             </div>
                         </div>
                         <div class="text-center my-3 mx-3">

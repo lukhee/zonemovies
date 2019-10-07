@@ -23,7 +23,6 @@ exports.getAllMovies = (req, res, next)=>{
         res.render("admins/homePage", { movies: movies, comingSoon:comingSoon, title: "admin HomePage", login: login})
     })
     .catch(err=>{
-        console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
         // return next(error)
@@ -64,9 +63,6 @@ exports.postCreateMovie = ( req, res, next ) => {
     } else {
         movieDetails.download = req.file.path
     }
-
-    res.send(movieDetails)
-
         if (category == "comingSoon") {
             delete movieDetails.price;
             delete movieDetails.time
@@ -76,7 +72,6 @@ exports.postCreateMovie = ( req, res, next ) => {
             db.collection ("movies")
                 .insertOne(movieDetails)
                 .then(result => {
-                    console.log("created movie successfully")
                     res.redirect('/admin/allMovies')
                 })
                 .catch(err => {
@@ -97,7 +92,6 @@ exports.editMovie = (req, res, next) => {
         res.render("admins/editMovie", { movie: movie, title: "admin movie", login: login})
     })
     .catch(err=>{
-        console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
         // return next(error)
@@ -121,11 +115,9 @@ exports.postEditMovie = (req, res, next)=>{
         {'_id': new ObjectID(id)},
         {$set : movieDetails})
     .then(update=>{
-        console.log("update successful")
         res.redirect("/admin/allMovies")
     })
     .catch(err=>{
-        console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
         // return next(error)
@@ -138,11 +130,9 @@ exports.deleteMovie = (req, res, next) => {
     db.collection('movies')
     .deleteOne({'_id' : new ObjectID(id)})
     .then(result=>{
-        console.log("movie deleted successfully")
         res.redirect("/admin/allMovies")
     })
     .catch(err => {
-        console.log(err)
         const error = new Error(err)
         error.httpStatusCode = 500;
         // return next(error)
