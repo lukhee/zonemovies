@@ -1,0 +1,7 @@
+{
+    "env":{
+        "MONGO_USER" : "balogun",
+        "MONGO_PASSWORD": "Balogun007",
+        "MONGO_DB": "beastCinema"
+    }
+}

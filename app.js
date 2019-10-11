@@ -1,4 +1,6 @@
 const express = require("express")
+const helmet = require("helmet")
+const compression = require("compression")
 const bodyParser = require("body-parser")
 const adminRoute = require("./routes/adminRoute")
 const userRoute = require("./routes/userRoute")
@@ -16,6 +18,10 @@ const bcrypt = require('bcrypt');
 // const { initializePayment, verifyPayment } = require('./config/paystack')(request);
 const app = express()
 
+app.use(helmet());
+app.use(compression());
+
+console.log(process.env.NODE_ENV)
 
 const PORT = process.env.PORT || 2023;
 var storage = multer.diskStorage({
@@ -94,7 +100,7 @@ mongoConnect(mongo, ()=>{
             )
         })
         .then(result=>{
-            console.log(result)
+            // console.log("result")
         })
     console.log("connection successful!!")
 })

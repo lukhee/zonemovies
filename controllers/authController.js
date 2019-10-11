@@ -39,12 +39,15 @@ exports.postLogin = (req, res, next)=>{
     db.collection('admin').find({username : admin.username})
     .next()
     .then(user=>{
+        console.log(user)
+        console.log("user before here")
         if(!user){
             return user
         }
         return bcrypt.compare(admin.password, user.password)
     })
     .then(password=>{
+        console.log(password)
         if (password) {
             req.session.isloggedin = true
             res.redirect("/admin/allMovies") 

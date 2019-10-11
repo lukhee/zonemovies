@@ -12,7 +12,6 @@ exports.getAllMovies = (req, res, next)=>{
     db.collection("movies")
     .find().toArray()
     .then(result=>{
-        console.log(result)
         result.forEach(movie => {
             if(movie.category == "nowShowing"){
                 movies.push(movie)
@@ -59,27 +58,27 @@ exports.postCreateMovie = ( req, res, next ) => {
     }
 
     if (!req.file) {
-        delete movieDetails.download
-    } else {
-        movieDetails.download = req.file.path
-    }
-        if (category == "comingSoon") {
+                delete movieDetails.download
+            } else {
+                movieDetails.download = req.file.path
+            }
+    if (category == "comingSoon") {
             delete movieDetails.price;
             delete movieDetails.time
             delete movieDetails.altImageName
             delete movieDetails.imageURL2
         }
-            db.collection ("movies")
-                .insertOne(movieDetails)
-                .then(result => {
-                    res.redirect('/admin/allMovies')
-                })
-                .catch(err => {
-                    console.log(err)
-                    const error = new Error(err)
-                    error.httpStatusCode = 500;
-                    // return next(error)
-                })
+    db.collection ("movies")
+        .insertOne(movieDetails)
+        .then(result => {
+            res.redirect('/admin/allMovies')
+        })
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500;
+        // return next(error)
+    })
 }
 
 exports.editMovie = (req, res, next) => {

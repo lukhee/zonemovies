@@ -19,11 +19,11 @@
                             <h5 class="text-muted"><%= movie.price %></h5>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between p-2">
-                        <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm px-5"> <span>Edit</span></a>
-                        <form action="/admin/deleteMovie" method="POST">
+                    <div class="d-flex justify-content-between mx-1 p-2">
+                        <a href="/admin/editMovie/<%=movie._id%>" class="btn btns btn-sm col-4"> <span>Edit</span></a>
+                        <form action="/admin/deleteMovie" method="POST" class="col-5">
                             <input type="hidden" name="id" value="<%= movie._id %>">
-                            <input type="submit" value="Delete" class="btn btns  btn-sm px-5">
+                            <input type="submit" value="Delete" class="btn btns  btn-sm px-4">
                         </form>
                     </div>
                 </div>

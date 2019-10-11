@@ -2,7 +2,6 @@ let data = []
 function loadData(){
     let inputValue = document.getElementById("data").innerText
     data = JSON.parse(inputValue)
-    console.log(data)
 }
 
 
