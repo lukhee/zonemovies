@@ -75,10 +75,11 @@ app.get("/error500", (req, res, next) => {
 app.use('/admin', adminRoute)
 app.use('/auth', authRoute)
 app.use('/', userRoute)
-
-// app.use((req, res, next) => {
-//     res.send("error 404 page not found")
-// })
+// error route
+app.use((req, res, next) => {
+    // let login = req.session
+    res.render("errorPages/error404", { login: false })
+})
 
 // app.use((error, req, res, next)=>{
 //     console.log("error found in error route")

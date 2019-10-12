@@ -7,7 +7,8 @@ const { initializePayment, verifyPayment } = require('../config/payment')(reques
 
 const transport = nodeMailer.createTransport(sendgridTransport({
     auth:{
-        api_key: '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'
+        // api_key: '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'
+        api_key: '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'
     }
 }))
 
@@ -147,7 +148,9 @@ exports.postBookedMovie = (req, res, next) => {
                  from: "lukheebalo@gmail.com.com",
                  subject: "your ticked info",
                  html: "ticket id:" + " " +ticketInfo.movieCode + "movie title: " + " " + ticketInfo.movieTitle,
-             }).catch(err=>{
+             })
+             .then(res => console.log('rez: ', res))
+             .catch(err=>{
                  console.log(err)
              })
         })
