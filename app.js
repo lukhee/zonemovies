@@ -49,7 +49,7 @@ app.use(express.static('public'))
 app.use('/uploads', express.static('uploads'))
 app.set('view engine', 'ejs');
 const store = new mongoStore({
-    uri: 'mongodb://localhost:27017/beastCinemal',
+    uri: `mongodb+srv://${process.env.MONGO_USER}:Balogun007.@cluster0-u8yjf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
     collection: "sessionStore"
 })
 

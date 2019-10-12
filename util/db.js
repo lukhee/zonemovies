@@ -1,5 +1,5 @@
 const url =`mongodb+srv://${process.env.MONGO_USER}:Balogun007.@cluster0-u8yjf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-
+27017
 let db
 
 const mongoConnect = (mongo, cb) => {
