@@ -2,6 +2,8 @@ const userController = require("../controllers/userController")
 
 const route = require("express").Router()
 
+route.get('/', userController.getAllMovies)
+
 route.get('/allMovies', userController.getAllMovies)
 
 route.get('/allMovies/:day', userController.getAllMoviesByDays)

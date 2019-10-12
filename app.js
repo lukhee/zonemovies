@@ -4,7 +4,7 @@ const compression = require("compression")
 const bodyParser = require("body-parser")
 const adminRoute = require("./routes/adminRoute")
 const userRoute = require("./routes/userRoute")
-// const authRoute = require("./routes/authRoute")
+const authRoute = require("./routes/authRoute")
 const errorRoute = require("./routes/errorRoute")
 var multer = require('multer')
 const request = require('request');
@@ -73,7 +73,7 @@ app.get("/error500", (req, res, next) => {
 })
 
 app.use('/admin', adminRoute)
-// app.use('/auth', authRoute)
+app.use('/auth', authRoute)
 app.use('/', userRoute)
 
 // app.use((req, res, next) => {
