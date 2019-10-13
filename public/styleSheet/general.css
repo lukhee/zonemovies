@@ -268,6 +268,11 @@ box-shadow: 0 0 0 0.2rem #ff57333d
     color: black;
 }
 
+#landingPage{
+height: 480px;
+background-color: rgba(255,0,0,0.1);
+}
+
 .admin-cat{
     width: 25%;
 }
@@ -311,6 +316,10 @@ box-shadow: 0 0 0 0.2rem #ff57333d
     background: #ff5733;
 }
 
+.singleImage{
+    height: 400px
+}
+
 @media only screen and (max-width: 1000px) {
   .admin-cat{
       width: 50% !important;
@@ -329,4 +338,12 @@ box-shadow: 0 0 0 0.2rem #ff57333d
       display: flex;
       justify-content: center
     }
+
+    #landingPage{
+        height: 200px;
+    }
+
+    .singleImage{
+    height: 240px
+}
 }

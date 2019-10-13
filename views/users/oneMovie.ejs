@@ -4,12 +4,12 @@
 
 <body class="p-0" onload="loadData()">
     <% include ../partials/header %>
-    <div class="bg-dark" style="height: 400px "> 
+    <div class="bg-dark singleImage"> 
         <img class="w-100 h-100" src="<%= movie.imageURL %>" alt="image hee">
     </div>
     <div class="container-fluid bg-dark">
-        <div class="container px-4">
-            <div class="text-white row justify-content-center p-3">
+        <div class="container">
+            <div class="text-white row justify-content-center">
                 <div class="col-12">
                     <div class="row justify-content-between px-2">
                         <h4> <span class="under"> <%= movie.title %> </span></h4>
@@ -19,7 +19,7 @@
                     </p>
                     <br>
                     <div class="row justify-content-between">
-                        <div class=" col-xs-4 col-4">
+                        <div class=" col-xs-5 col-4">
                             <h6 class="m-0 mt-5">Opening date </h6>
                             <h6><span class="txt-muted"><%= movie.releasedDate %></span></h6>
                             <h6 class="m-0 mt-3">Running Time </h6>
