@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production MONGO_USER=balogun MONGO_DB=beastCinema node app.js",
+    "start": "NODE_ENV=production MONGO_USER=balogun MONGO_DB=beastCinema SENDGRID_API=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 node app.js",
     "start-server": "node app.js",
     "start:dev": "nodemon app.js"
   },

@@ -8,7 +8,7 @@ const { initializePayment, verifyPayment } = require('../config/payment')(reques
 const transport = nodeMailer.createTransport(sendgridTransport({
     auth:{
         // api_key: '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'
-        api_key: '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'
+        api_key: process.env.SENDGRID_API
     }
 }))
 
@@ -150,9 +150,11 @@ exports.postBookedMovie = (req, res, next) => {
                  html: `
                     <h3> Hello ${ticketInfo.name}, </h3>
                     <p> Movie Info is shown below </p>
-                    <h4> id: ${ticketInfo.movieCode} </h4>
-                    <h4> Movie title: ${ ticketInfo.movieTitle} </h4>
-                    <h4> show day: ${ticketInfo.day}, Show Time: ${ticketInfo.time}  </h4>
+                    <h4> ID: ${ticketInfo.movieCode} </h4>
+                    <h4> Movie title :  ${ ticketInfo.movieTitle} </h4>
+                    <h4> show day : ${ticketInfo.day} </h4>  
+                    <h4> Show Time: ${ticketInfo.time}  </h4>
+                    <p> You can check your movie details on the site by entering the ID showned upward </p>
                 `
              })
              .then(res => console.log('rez: ', res))
