@@ -146,8 +146,14 @@ exports.postBookedMovie = (req, res, next) => {
              return transport.sendMail({
                  to: [ticketInfo.email, 'o.balogun@ymail.com'],
                  from: "lukheebalo@gmail.com.com",
-                 subject: "your ticked info",
-                 html: "ticket id:" + " " +ticketInfo.movieCode + "movie title: " + " " + ticketInfo.movieTitle,
+                 subject: "BeastCinema ticket Info",
+                 html: `
+                    <h3> Hello ${ticketInfo.name}, </h3>
+                    <p> Movie Info is shown below </p>
+                    <h4> id: ${ticketInfo.movieCode} </h4>
+                    <h4> Movie title: ${ ticketInfo.movieTitle} </h4>
+                    <h4> show day: ${ticketInfo.day}, Show Time: ${ticketInfo.time}  </h4>
+                `
              })
              .then(res => console.log('rez: ', res))
              .catch(err=>{

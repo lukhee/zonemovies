@@ -17,13 +17,11 @@ const ObjectID = require("mongodb").ObjectID
 const bcrypt = require('bcrypt');
 // const { initializePayment, verifyPayment } = require('./config/paystack')(request);
 const app = express()
+const PORT = process.env.PORT || 2023;
 
 app.use(helmet());
 app.use(compression());
 
-console.log(process.env.NODE_ENV)
-
-const PORT = process.env.PORT || 2023;
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads')
